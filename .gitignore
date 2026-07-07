@@ -1,0 +1,22 @@
+cat > ~/qa-tms/.gitignore << 'EOF'
+# Python
+__pycache__/
+*.py[cod]
+*.egg-info/
+backend/venv/
+
+# Node
+frontend/node_modules/
+frontend/dist/
+
+# OS
+.DS_Store
+Thumbs.db
+
+# IDE
+.idea/
+.vscode/
+
+# Logs
+*.log
+EOF
