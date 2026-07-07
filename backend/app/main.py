@@ -1,5 +1,6 @@
 from fastapi import FastAPI
 from fastapi.middleware.cors import CORSMiddleware
+from app.routers import test_cases_router
 
 app = FastAPI(
     title="QA TMS API",
@@ -18,14 +19,10 @@ app.add_middleware(
 
 @app.get("/")
 async def root():
-    return {"message": "QA TMS API is running! 🚀", "docs": "/docs"}
+    return {"message": "QA TMS API is running! ", "docs": "/docs"}
 
 @app.get("/api/health")
 async def health_check():
     return {"status": "healthy", "database": "connected"}
 
-# TODO: Add routers
-# from app.routers import workspaces, test_cases, test_runs
-# app.include_router(workspaces.router, prefix="/api/workspaces", tags=["Workspaces"])
-# app.include_router(test_cases.router, prefix="/api/test-cases", tags=["Test Cases"])
-# app.include_router(test_runs.router, prefix="/api/test-runs", tags=["Test Runs"])
+app.include_router(test_cases_router, prefix="/api/test-cases", tags=["Test Cases"])
