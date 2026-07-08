@@ -1,5 +1,9 @@
 from fastapi import FastAPI
 from fastapi.middleware.cors import CORSMiddleware
+
+# Импортируем ВСЕ модели чтобы они зарегистрировались
+from app.models import workspace, user, project, suite, test_case, test_run, test_result
+
 from app.routers import test_cases_router
 
 app = FastAPI(
@@ -19,10 +23,11 @@ app.add_middleware(
 
 @app.get("/")
 async def root():
-    return {"message": "QA TMS API is running! ", "docs": "/docs"}
+    return {"message": "QA TMS API is running! 🚀", "docs": "/docs"}
 
 @app.get("/api/health")
 async def health_check():
     return {"status": "healthy", "database": "connected"}
 
+# Подключаем роутеры
 app.include_router(test_cases_router, prefix="/api/test-cases", tags=["Test Cases"])
