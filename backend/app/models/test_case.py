@@ -8,6 +8,7 @@ class TestCase(Base):
     __tablename__ = "test_cases"
     
     id = Column(UUID(as_uuid=True), primary_key=True, default=func.uuid_generate_v4())
+    custom_id = Column(String(20), unique=True, nullable=False)
     suite_id = Column(UUID(as_uuid=True), ForeignKey("suites.id"))
     project_id = Column(UUID(as_uuid=True), ForeignKey("projects.id"), nullable=False)
     workspace_id = Column(UUID(as_uuid=True), ForeignKey("workspaces.id"), nullable=False)

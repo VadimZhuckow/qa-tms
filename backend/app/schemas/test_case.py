@@ -4,6 +4,7 @@ from datetime import datetime
 from uuid import UUID
 
 class TestCaseCreate(BaseModel):
+    custom_id: Optional[str] = None
     title: str
     description: Optional[str] = ""
     preconditions: Optional[str] = ""
@@ -32,6 +33,7 @@ class TestCaseUpdate(BaseModel):
 
 class TestCaseResponse(BaseModel):
     id: UUID
+    custom_id: str 
     title: str
     description: str
     preconditions: str
